@@ -1,4 +1,4 @@
-package io.zeromcp;
+package io.antidrift.zeromcp;
 
 import java.util.List;
 
@@ -8,10 +8,15 @@ import java.util.List;
 public record Permissions(
     NetworkPermission network,
     FsPermission fs,
-    boolean exec
+    boolean exec,
+    long executeTimeout // ms, 0 means use config default
 ) {
     public Permissions() {
-        this(NetworkPermission.unset(), FsPermission.NONE, false);
+        this(NetworkPermission.unset(), FsPermission.NONE, false, 0);
+    }
+
+    public Permissions(NetworkPermission network, FsPermission fs, boolean exec) {
+        this(network, fs, exec, 0);
     }
 
     public static Permissions of() {

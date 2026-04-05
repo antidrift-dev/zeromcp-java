@@ -1,4 +1,4 @@
-package io.zeromcp;
+package io.antidrift.zeromcp;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
@@ -23,6 +23,9 @@ public class Config {
     private String name = "zeromcp";
     private String version = "0.1.0";
 
+    @SerializedName("execute_timeout")
+    private long executeTimeout = 30000; // ms
+
     private static final Gson GSON = new Gson();
 
     public String transport() { return transport; }
@@ -32,6 +35,7 @@ public class Config {
     public String separator() { return separator; }
     public String name() { return name; }
     public String version() { return version; }
+    public long executeTimeout() { return executeTimeout; }
 
     /**
      * Loads config from zeromcp.config.json in the given directory.

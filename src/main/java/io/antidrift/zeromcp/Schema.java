@@ -1,4 +1,4 @@
-package io.zeromcp;
+package io.antidrift.zeromcp;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;

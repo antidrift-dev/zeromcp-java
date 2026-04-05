@@ -1,4 +1,4 @@
-package io.zeromcp;
+package io.antidrift.zeromcp;
 
 /**
  * Context passed to tool execution.

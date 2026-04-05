@@ -1,4 +1,4 @@
-package io.zeromcp;
+package io.antidrift.zeromcp;
 
 /**
  * Simple type names for input schema fields.

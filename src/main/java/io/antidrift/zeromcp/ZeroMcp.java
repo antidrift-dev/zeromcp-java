@@ -1,10 +1,11 @@
-package io.zeromcp;
+package io.antidrift.zeromcp;
 
 import com.google.gson.*;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.*;
+import java.util.concurrent.*;
 
 /**
  * ZeroMcp -- zero-config MCP runtime for Java.
@@ -130,7 +131,13 @@ public class ZeroMcp {
         }
 
         var name = params.has("name") ? params.get("name").getAsString() : "";
-        var argsJson = params.has("arguments") ? params.getAsJsonObject("arguments") : new JsonObject();
+        // Guard against null arguments (JSON null or missing)
+        JsonObject argsJson;
+        if (params.has("arguments") && params.get("arguments").isJsonObject()) {
+            argsJson = params.getAsJsonObject("arguments");
+        } else {
+            argsJson = new JsonObject();
+        }
 
         var namedTool = tools.get(name);
         if (namedTool == null) {
@@ -148,13 +155,35 @@ public class ZeroMcp {
 
         try {
             var ctx = new Ctx(name, tool.permissions());
-            var result = tool.executor().execute(argsMap, ctx);
+
+            // Tool-level timeout overrides config default
+            long timeoutMs = tool.permissions().executeTimeout() > 0
+                ? tool.permissions().executeTimeout()
+                : config.executeTimeout();
+
+            var future = CompletableFuture.supplyAsync(() -> {
+                try {
+                    return tool.executor().execute(argsMap, ctx);
+                } catch (Exception ex) {
+                    throw new CompletionException(ex);
+                }
+            });
+
+            Object result;
+            try {
+                result = future.get(timeoutMs, TimeUnit.MILLISECONDS);
+            } catch (TimeoutException te) {
+                future.cancel(true);
+                return buildToolResult("Tool \"" + name + "\" timed out after " + timeoutMs + "ms", true);
+            }
+
             var text = result instanceof String s ? s
                 : result == null ? "null"
                 : gson.toJson(result);
             return buildToolResult(text, false);
         } catch (Exception e) {
-            return buildToolResult("Error: " + e.getMessage(), true);
+            var cause = e instanceof ExecutionException ? e.getCause() : e;
+            return buildToolResult("Error: " + (cause != null ? cause.getMessage() : e.getMessage()), true);
         }
     }
 

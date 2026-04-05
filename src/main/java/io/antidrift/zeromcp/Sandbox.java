@@ -1,7 +1,7 @@
-package io.zeromcp;
+package io.antidrift.zeromcp;
 
-import io.zeromcp.Permissions.FsPermission;
-import io.zeromcp.Permissions.NetworkPermission;
+import io.antidrift.zeromcp.Permissions.FsPermission;
+import io.antidrift.zeromcp.Permissions.NetworkPermission;
 
 import java.util.List;
 

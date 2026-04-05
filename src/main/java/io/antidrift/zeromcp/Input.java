@@ -1,4 +1,4 @@
-package io.zeromcp;
+package io.antidrift.zeromcp;
 
 /**
  * An input field definition — name, type, description, and whether it's optional.
