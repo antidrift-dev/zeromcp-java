@@ -1,0 +1,47 @@
+@options
+@packages
+-classpath
+'/root/.m2/repository/com/google/code/gson/gson/2.11.0/gson-2.11.0.jar:/root/.m2/repository/com/google/errorprone/error_prone_annotations/2.27.0/error_prone_annotations-2.27.0.jar'
+-encoding
+'UTF-8'
+-protected
+-source
+'17'
+-sourcepath
+'/build/src/main/java:/build/target/generated-sources/annotations'
+-author
+-bottom
+'Copyright &#169; 2026. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'/build/target/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'zeromcp 0.1.1 API'
+-use
+-version
+-windowtitle
+'zeromcp 0.1.1 API'
+io.antidrift.zeromcp
+/root/.m2/repository/com/google/code/gson/gson/2.11.0/gson-2.11.0.jar = 1716144881000
+/root/.m2/repository/com/google/errorprone/error_prone_annotations/2.27.0/error_prone_annotations-2.27.0.jar = 1714146969000
+/build/src/main/java = 1775165888482
+/build/target/generated-sources/annotations = 1775579766965
+/build/target/apidocs/tag-search-index.js = 1775579788280
+/build/target/apidocs/overview-tree.html = 1775579788271
+/build/target/apidocs/module-search-index.js = 1775579788279
+/build/target/apidocs/index.html = 1775579788289
+/build/target/apidocs/package-search-index.js = 1775579788279
+/build/target/apidocs/jquery-ui.overrides.css = 1775579788295
+/build/target/apidocs/index-all.html = 1775579788289
+/build/target/apidocs/allpackages-index.html = 1775579788278
+/build/target/apidocs/member-search-index.js = 1775579788279
+/build/target/apidocs/script.js = 1775579788292
+/build/target/apidocs/stylesheet.css = 1775579788291
+/build/target/apidocs/help-doc.html = 1775579788291
+/build/target/apidocs/element-list = 1775579788241
+/build/target/apidocs/allclasses-index.html = 1775579788278
+/build/target/apidocs/type-search-index.js = 1775579788279
+/build/target/apidocs/search.js = 1775579788292

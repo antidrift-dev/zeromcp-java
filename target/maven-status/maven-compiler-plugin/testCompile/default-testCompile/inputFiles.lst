@@ -1,0 +1,4 @@
+/build/src/test/java/io/antidrift/zeromcp/ConfigTest.java
+/build/src/test/java/io/antidrift/zeromcp/SandboxTest.java
+/build/src/test/java/io/antidrift/zeromcp/SchemaTest.java
+/build/src/test/java/io/antidrift/zeromcp/ServerTest.java
